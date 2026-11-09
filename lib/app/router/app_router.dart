@@ -8,18 +8,40 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
+
     AutoRoute(
       initial: true,
       page: RootRoute.page,
       children: [
-        AutoRoute(page: CatalogRoute.page, initial: true),
-        AutoRoute(page: ProductRoute.page)
+
+        AutoRoute(
+          initial: true,
+          page: HomeRootRoute.page,
+          children: [
+            AutoRoute(page: HomeRoute.page, initial: true)
+          ]
+        ),
+
+        AutoRoute(
+          page: CatalogRootRoute.page,
+          children: [
+            AutoRoute(page: CatalogRoute.page, initial: true),
+            AutoRoute(page: ProductRoute.page)
+          ]
+        )
+
       ]
     )
+
   ];
 }
 
 @RoutePage()
-class RootPage extends AutoRouter {
-  const RootPage({super.key});
+class HomeRootPage extends AutoRouter {
+  const HomeRootPage({super.key});
+}
+
+@RoutePage()
+class CatalogRootPage extends AutoRouter {
+  const CatalogRootPage({super.key});
 }
