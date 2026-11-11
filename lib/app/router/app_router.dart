@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:homeberries/app/router/app_router.gr.dart';
+import 'package:homeberries/app/router/guards/intro_guard.dart';
 
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
@@ -8,12 +9,13 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-
     AutoRoute(
       initial: true,
       page: RootRoute.page,
+      guards: [
+        IntroGuard()
+      ],
       children: [
-
         AutoRoute(
           initial: true,
           page: HomeRootRoute.page,
@@ -21,7 +23,6 @@ class AppRouter extends RootStackRouter {
             AutoRoute(page: HomeRoute.page, initial: true)
           ]
         ),
-
         AutoRoute(
           page: CatalogRootRoute.page,
           children: [
@@ -29,10 +30,9 @@ class AppRouter extends RootStackRouter {
             AutoRoute(page: ProductRoute.page)
           ]
         )
-
       ]
-    )
-
+    ),
+    AutoRoute(page: IntroRoute.page),
   ];
 }
 
