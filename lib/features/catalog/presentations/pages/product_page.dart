@@ -27,43 +27,56 @@ class ProductPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(
-          spacing: 12,
-          children: [
-            Icon(
-              product.icon,
-              size: 200,
-            ),
-            
-            Row(
-              mainAxisAlignment: .spaceBetween,
-              spacing: 12,
-              children: [
-                Text(
-                  product.name,
-                  style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: const FontWeight(800)
+        child: LayoutBuilder(
+          builder: (context, _) {
+            return SingleChildScrollView(
+              child: Column(
+                spacing: 12,
+                children: [
+                  SizedBox(
+                    width: 350,
+                    height: 350,
+                    child: Image.network(
+                      product.imageUrl,
+                    ),
                   ),
-                ),
 
-                ProductRating(rating: product.rating)
-              ],
-            ),
+                  Row(
+                    mainAxisAlignment: .spaceBetween,
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          product.name,
+                          maxLines: 2,
+                          overflow: .ellipsis,
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: const FontWeight(800)
+                          ),
+                        ),
+                      ),
 
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  '${product.price} RUB',
-                  style: TextStyle(
-                      fontWeight: FontWeight(500),
-                      fontSize: 18
+                      ProductRating(rating: product.rating)
+                    ],
                   ),
-                ),
-              ],
-            )
-          ],
+
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        '${product.price} RUB',
+                        style: TextStyle(
+                            fontWeight: FontWeight(500),
+                            fontSize: 18
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            );
+          }
         ),
       ),
     );

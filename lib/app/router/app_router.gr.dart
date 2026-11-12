@@ -27,18 +27,46 @@ import 'package:homeberries/features/intro/presentation/pages/intro_page.dart'
 
 /// generated route for
 /// [_i1.CatalogPage]
-class CatalogRoute extends _i7.PageRouteInfo<void> {
-  const CatalogRoute({List<_i7.PageRouteInfo>? children})
-    : super(CatalogRoute.name, initialChildren: children);
+class CatalogRoute extends _i7.PageRouteInfo<CatalogRouteArgs> {
+  CatalogRoute({_i8.Key? key, List<_i7.PageRouteInfo>? children})
+    : super(
+        CatalogRoute.name,
+        args: CatalogRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'CatalogRoute';
 
   static _i7.PageInfo page = _i7.PageInfo(
     name,
     builder: (data) {
-      return const _i1.CatalogPage();
+      final args = data.argsAs<CatalogRouteArgs>(
+        orElse: () => const CatalogRouteArgs(),
+      );
+      return _i1.CatalogPage(key: args.key);
     },
   );
+}
+
+class CatalogRouteArgs {
+  const CatalogRouteArgs({this.key});
+
+  final _i8.Key? key;
+
+  @override
+  String toString() {
+    return 'CatalogRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! CatalogRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for

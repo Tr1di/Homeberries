@@ -18,13 +18,13 @@ class RootPage extends StatelessWidget {
       bottomNavigationBuilder: (context, tabsRouter) {
         return BottomNavigationBar(
           currentIndex: tabsRouter.activeIndex,
-            onTap: (index) {
-              if (index == tabsRouter.activeIndex) {
-                tabsRouter.stackRouterOfIndex(index)?.popUntilRoot();
-              } else {
-                tabsRouter.setActiveIndex(index);
-              }
-            },
+          onTap: (index) {
+            if (index == tabsRouter.activeIndex) {
+              tabsRouter.stackRouterOfIndex(index)?.popUntilRoot();
+            } else {
+              tabsRouter.setActiveIndex(index);
+            }
+          },
           items: const [
 
             BottomNavigationBarItem(

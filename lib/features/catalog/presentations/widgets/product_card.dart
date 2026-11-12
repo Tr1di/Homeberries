@@ -20,60 +20,58 @@ class ProductCard extends StatelessWidget {
           ProductRoute(product: product)
         );
       },
-      child: Container(
-        height: 100,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 1,
-            color: Colors.black,
-          ),
-          borderRadius: BorderRadius.circular(12)
-        ),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        child: Padding(
         padding: EdgeInsets.all(6),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 12,
-          children: [
-            Icon(
-              product.icon,
-              size: 84,
-            ),
-
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.name,
-                    style: TextStyle(
-                      fontWeight: FontWeight(700),
-                      fontSize: 24
-                    ),
-                  ),
-
-                  Text(
-                    '${product.price} RUB',
-                    style: TextStyle(
-                        fontWeight: FontWeight(500),
-                        fontSize: 18
-                    ),
-                  )
-                ],
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 12,
+            children: [
+              SizedBox(
+                width: 80,
+                height: 80,
+                child: Image.network(
+                    product.imageUrl,
+                ),
               ),
-            ),
 
-            Expanded(
-              child: Column(
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.name,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontWeight: FontWeight(700),
+                        fontSize: 24,
+                      ),
+                    ),
+
+                    Text(
+                      '${product.price} RUB',
+                      style: TextStyle(
+                          fontWeight: FontWeight(500),
+                          fontSize: 18
+                      ),
+                    )
+                  ],
+                ),
+              ),
+
+              Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ProductRating(
                       rating: product.rating
                   )
                 ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
