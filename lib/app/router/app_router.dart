@@ -29,6 +29,12 @@ class AppRouter extends RootStackRouter {
             AutoRoute(page: CatalogRoute.page, initial: true),
             AutoRoute(page: ProductRoute.page)
           ]
+        ),
+        AutoRoute(
+          page: SettingsRootRoute.page,
+          children: [
+            AutoRoute(page: SettingsRoute.page, initial: true)
+          ]
         )
       ]
     ),
@@ -44,4 +50,9 @@ class HomeRootPage extends AutoRouter {
 @RoutePage()
 class CatalogRootPage extends AutoRouter {
   const CatalogRootPage({super.key});
+}
+
+@RoutePage()
+class SettingsRootPage extends AutoRouter {
+  const SettingsRootPage({super.key});
 }

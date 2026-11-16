@@ -14,12 +14,9 @@ class CatalogPage extends StatelessWidget {
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Каталог",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight(700)
-          ),
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         centerTitle: true,
       ),

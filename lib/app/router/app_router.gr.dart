@@ -10,12 +10,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 import 'package:homeberries/app/layout/root_page.dart' as _i6;
 import 'package:homeberries/app/router/app_router.dart' as _i2;
 import 'package:homeberries/features/catalog/domain/entities/product.dart'
-    as _i9;
+    as _i10;
 import 'package:homeberries/features/catalog/presentations/pages/catalog_page.dart'
     as _i1;
 import 'package:homeberries/features/catalog/presentations/pages/product_page.dart'
@@ -24,11 +24,13 @@ import 'package:homeberries/features/home/presentation/pages/home_page.dart'
     as _i3;
 import 'package:homeberries/features/intro/presentation/pages/intro_page.dart'
     as _i4;
+import 'package:homeberries/features/settings/presentation/pages/settings_page.dart'
+    as _i7;
 
 /// generated route for
 /// [_i1.CatalogPage]
-class CatalogRoute extends _i7.PageRouteInfo<CatalogRouteArgs> {
-  CatalogRoute({_i8.Key? key, List<_i7.PageRouteInfo>? children})
+class CatalogRoute extends _i8.PageRouteInfo<CatalogRouteArgs> {
+  CatalogRoute({_i9.Key? key, List<_i8.PageRouteInfo>? children})
     : super(
         CatalogRoute.name,
         args: CatalogRouteArgs(key: key),
@@ -37,7 +39,7 @@ class CatalogRoute extends _i7.PageRouteInfo<CatalogRouteArgs> {
 
   static const String name = 'CatalogRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<CatalogRouteArgs>(
@@ -51,7 +53,7 @@ class CatalogRoute extends _i7.PageRouteInfo<CatalogRouteArgs> {
 class CatalogRouteArgs {
   const CatalogRouteArgs({this.key});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -71,13 +73,13 @@ class CatalogRouteArgs {
 
 /// generated route for
 /// [_i2.CatalogRootPage]
-class CatalogRootRoute extends _i7.PageRouteInfo<void> {
-  const CatalogRootRoute({List<_i7.PageRouteInfo>? children})
+class CatalogRootRoute extends _i8.PageRouteInfo<void> {
+  const CatalogRootRoute({List<_i8.PageRouteInfo>? children})
     : super(CatalogRootRoute.name, initialChildren: children);
 
   static const String name = 'CatalogRootRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i2.CatalogRootPage();
@@ -87,13 +89,13 @@ class CatalogRootRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomePage]
-class HomeRoute extends _i7.PageRouteInfo<void> {
-  const HomeRoute({List<_i7.PageRouteInfo>? children})
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute({List<_i8.PageRouteInfo>? children})
     : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i3.HomePage();
@@ -103,13 +105,13 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.HomeRootPage]
-class HomeRootRoute extends _i7.PageRouteInfo<void> {
-  const HomeRootRoute({List<_i7.PageRouteInfo>? children})
+class HomeRootRoute extends _i8.PageRouteInfo<void> {
+  const HomeRootRoute({List<_i8.PageRouteInfo>? children})
     : super(HomeRootRoute.name, initialChildren: children);
 
   static const String name = 'HomeRootRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i2.HomeRootPage();
@@ -119,11 +121,11 @@ class HomeRootRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.IntroPage]
-class IntroRoute extends _i7.PageRouteInfo<IntroRouteArgs> {
+class IntroRoute extends _i8.PageRouteInfo<IntroRouteArgs> {
   IntroRoute({
-    _i8.Key? key,
+    _i9.Key? key,
     required void Function() onDone,
-    List<_i7.PageRouteInfo>? children,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          IntroRoute.name,
          args: IntroRouteArgs(key: key, onDone: onDone),
@@ -132,7 +134,7 @@ class IntroRoute extends _i7.PageRouteInfo<IntroRouteArgs> {
 
   static const String name = 'IntroRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<IntroRouteArgs>();
@@ -144,7 +146,7 @@ class IntroRoute extends _i7.PageRouteInfo<IntroRouteArgs> {
 class IntroRouteArgs {
   const IntroRouteArgs({this.key, required this.onDone});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   final void Function() onDone;
 
@@ -166,11 +168,11 @@ class IntroRouteArgs {
 
 /// generated route for
 /// [_i5.ProductPage]
-class ProductRoute extends _i7.PageRouteInfo<ProductRouteArgs> {
+class ProductRoute extends _i8.PageRouteInfo<ProductRouteArgs> {
   ProductRoute({
-    _i8.Key? key,
-    required _i9.Product product,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i10.Product product,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          ProductRoute.name,
          args: ProductRouteArgs(key: key, product: product),
@@ -179,7 +181,7 @@ class ProductRoute extends _i7.PageRouteInfo<ProductRouteArgs> {
 
   static const String name = 'ProductRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ProductRouteArgs>();
@@ -191,9 +193,9 @@ class ProductRoute extends _i7.PageRouteInfo<ProductRouteArgs> {
 class ProductRouteArgs {
   const ProductRouteArgs({this.key, required this.product});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.Product product;
+  final _i10.Product product;
 
   @override
   String toString() {
@@ -213,16 +215,48 @@ class ProductRouteArgs {
 
 /// generated route for
 /// [_i6.RootPage]
-class RootRoute extends _i7.PageRouteInfo<void> {
-  const RootRoute({List<_i7.PageRouteInfo>? children})
+class RootRoute extends _i8.PageRouteInfo<void> {
+  const RootRoute({List<_i8.PageRouteInfo>? children})
     : super(RootRoute.name, initialChildren: children);
 
   static const String name = 'RootRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i6.RootPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i7.SettingsPage]
+class SettingsRoute extends _i8.PageRouteInfo<void> {
+  const SettingsRoute({List<_i8.PageRouteInfo>? children})
+    : super(SettingsRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.SettingsPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i2.SettingsRootPage]
+class SettingsRootRoute extends _i8.PageRouteInfo<void> {
+  const SettingsRootRoute({List<_i8.PageRouteInfo>? children})
+    : super(SettingsRootRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRootRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.SettingsRootPage();
     },
   );
 }

@@ -12,7 +12,8 @@ class RootPage extends StatelessWidget {
 
       routes: const [
         HomeRootRoute(),
-        CatalogRootRoute()
+        CatalogRootRoute(),
+        SettingsRootRoute()
       ],
 
       bottomNavigationBuilder: (context, tabsRouter) {
@@ -39,6 +40,13 @@ class RootPage extends StatelessWidget {
                 Icons.grid_view_rounded
               ),
               label: "Каталог"
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings
+              ),
+              label: "Настройки"
             )
 
           ]

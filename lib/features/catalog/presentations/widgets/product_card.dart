@@ -45,18 +45,12 @@ class ProductCard extends StatelessWidget {
                       product.name,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontWeight: FontWeight(700),
-                        fontSize: 24,
-                      ),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
 
                     Text(
                       '${product.price} RUB',
-                      style: TextStyle(
-                          fontWeight: FontWeight(500),
-                          fontSize: 18
-                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     )
                   ],
                 ),
