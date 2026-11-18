@@ -46,12 +46,13 @@ final darkTheme = ThemeData(
   cardTheme: CardThemeData(
     elevation: 10,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadiusGeometry.circular(100),
+      borderRadius: BorderRadiusGeometry.circular(24),
     ),
     shadowColor: Colors.deepPurple,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.deepPurple,
       maximumSize: const Size(double.infinity, 120),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(12)

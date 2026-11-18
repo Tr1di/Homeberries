@@ -13,43 +13,49 @@ class RootPage extends StatelessWidget {
       routes: const [
         HomeRootRoute(),
         CatalogRootRoute(),
-        SettingsRootRoute()
+        CartRootRoute(),
+        // SettingsRootRoute()
       ],
 
       bottomNavigationBuilder: (context, tabsRouter) {
         return BottomNavigationBar(
-          currentIndex: tabsRouter.activeIndex,
-          onTap: (index) {
-            if (index == tabsRouter.activeIndex) {
-              tabsRouter.stackRouterOfIndex(index)?.popUntilRoot();
-            } else {
-              tabsRouter.setActiveIndex(index);
-            }
-          },
-          items: const [
-
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.house
+            currentIndex: tabsRouter.activeIndex,
+            onTap: (index) {
+              if (index == tabsRouter.activeIndex) {
+                tabsRouter.stackRouterOfIndex(index)?.popUntilRoot();
+              } else {
+                tabsRouter.setActiveIndex(index);
+              }
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.house
+                ),
+                label: "Главная"
               ),
-              label: "Главная"
-            ),
 
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.grid_view_rounded
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.grid_view_rounded
+                ),
+                label: "Каталог"
               ),
-              label: "Каталог"
-            ),
 
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shopping_cart
+                ),
+                label: "Корзина"
               ),
-              label: "Настройки"
-            )
 
-          ]
+              // BottomNavigationBarItem(
+              //   icon: Icon(
+              //     Icons.settings
+              //   ),
+              //   label: "Настройки"
+              // )
+            ]
         );
       },
     );

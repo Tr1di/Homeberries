@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:homeberries/app/providers/cart_provider.dart';
 import 'package:homeberries/app/router/app_router.gr.dart';
 import 'package:homeberries/features/catalog/domain/entities/product.dart';
 import 'package:homeberries/features/catalog/presentations/widgets/product_rating.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -14,58 +16,79 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.pushRoute(
-          ProductRoute(product: product)
-        );
-      },
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        child: Padding(
-        padding: EdgeInsets.all(6),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 12,
-            children: [
-              SizedBox(
-                width: 80,
-                height: 80,
-                child: Image.network(
-                    product.imageUrl,
-                ),
-              ),
-
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.name,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-
-                    Text(
-                      '${product.price} RUB',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    )
-                  ],
-                ),
-              ),
-
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          spacing: 12,
+          crossAxisAlignment: .stretch,
+          children: [
+            GestureDetector(
+              onTap: () {
+                context.pushRoute(
+                  ProductRoute(product: product)
+                );
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 12,
                 children: [
-                  ProductRating(
-                      rating: product.rating
+                  SizedBox(
+                    width: 80,
+                    height: 80,
+                    child: Image.network(
+                        product.imageUrl,
+                    ),
+                  ),
+
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          product.name,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+
+                        Text(
+                          '${product.price} RUB',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        )
+                      ],
+                    ),
+                  ),
+
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ProductRating(
+                          rating: product.rating
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+
+            ElevatedButton(
+                onPressed: () {
+                  context.read<CartProvider>().addProduct(product);
+                },
+                child: Selector<CartProvider, int?>(
+                  selector: (context, cart) => cart.items[product.id]?.amount,
+                  builder: (context, amount, child) {
+                    if (amount == null) {
+                      return Text("В корзину");
+                    }
+
+                    return Text("В корзину ($amount)");
+                  },
+                )
+            )
+          ],
         ),
       ),
     );

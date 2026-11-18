@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:  Text(
+        child: Text(
           "Hello",
           style: Theme.of(context).textTheme.titleMedium,
         ),

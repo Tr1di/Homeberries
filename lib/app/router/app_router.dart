@@ -31,6 +31,12 @@ class AppRouter extends RootStackRouter {
           ]
         ),
         AutoRoute(
+            page: CartRootRoute.page,
+            children: [
+              AutoRoute(page: CartRoute.page, initial: true)
+            ]
+        ),
+        AutoRoute(
           page: SettingsRootRoute.page,
           children: [
             AutoRoute(page: SettingsRoute.page, initial: true)
@@ -50,6 +56,11 @@ class HomeRootPage extends AutoRouter {
 @RoutePage()
 class CatalogRootPage extends AutoRouter {
   const CatalogRootPage({super.key});
+}
+
+@RoutePage()
+class CartRootPage extends AutoRouter {
+  const CartRootPage({super.key});
 }
 
 @RoutePage()
