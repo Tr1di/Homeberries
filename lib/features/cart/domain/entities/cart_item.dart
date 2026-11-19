@@ -15,4 +15,18 @@ class CartItem {
         amount: amount ?? this.amount
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'product': product.toMap(),
+      'amount': amount
+    };
+  }
+
+  factory CartItem.fromMap(Map<dynamic, dynamic> map) {
+    return CartItem(
+        product: Product.fromMap(map['product']),
+        amount: map['amount']
+    );
+  }
 }

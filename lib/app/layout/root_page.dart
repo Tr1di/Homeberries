@@ -14,11 +14,12 @@ class RootPage extends StatelessWidget {
         HomeRootRoute(),
         CatalogRootRoute(),
         CartRootRoute(),
-        // SettingsRootRoute()
+        SettingsRootRoute()
       ],
 
       bottomNavigationBuilder: (context, tabsRouter) {
         return BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: (index) {
               if (index == tabsRouter.activeIndex) {
@@ -49,12 +50,12 @@ class RootPage extends StatelessWidget {
                 label: "Корзина"
               ),
 
-              // BottomNavigationBarItem(
-              //   icon: Icon(
-              //     Icons.settings
-              //   ),
-              //   label: "Настройки"
-              // )
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings
+                ),
+                label: "Настройки"
+              )
             ]
         );
       },

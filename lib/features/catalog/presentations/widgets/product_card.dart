@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:homeberries/app/providers/cart_provider.dart';
 import 'package:homeberries/app/router/app_router.gr.dart';
+import 'package:homeberries/features/cart/presentation/widgets/add_to_cart_button.dart';
 import 'package:homeberries/features/catalog/domain/entities/product.dart';
 import 'package:homeberries/features/catalog/presentations/widgets/product_rating.dart';
 import 'package:provider/provider.dart';
@@ -73,20 +74,8 @@ class ProductCard extends StatelessWidget {
               ),
             ),
 
-            ElevatedButton(
-                onPressed: () {
-                  context.read<CartProvider>().addProduct(product);
-                },
-                child: Selector<CartProvider, int?>(
-                  selector: (context, cart) => cart.items[product.id]?.amount,
-                  builder: (context, amount, child) {
-                    if (amount == null) {
-                      return Text("В корзину");
-                    }
-
-                    return Text("В корзину ($amount)");
-                  },
-                )
+            AddToCartButton(
+                product: product
             )
           ],
         ),

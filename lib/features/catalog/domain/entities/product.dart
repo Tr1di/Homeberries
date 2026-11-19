@@ -28,6 +28,30 @@ class Product {
         rating: RatingData.fromJson(json['rating'])
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'category': category,
+      'price': price,
+      'imageUrl': imageUrl,
+      'rating': rating.toMap(),
+    };
+  }
+
+  factory Product.fromMap(Map<dynamic, dynamic> map) {
+    return Product(
+        id: map['id'] as int,
+        name: map['name'] as String,
+        description: map['description'] as String,
+        category: map['category'] as String,
+        price: (map['price'] as num).toDouble(),
+        imageUrl: map['imageUrl'] as String,
+        rating: RatingData.fromMap(map['rating'])
+    );
+  }
 }
 
 class RatingData {
@@ -43,6 +67,20 @@ class RatingData {
     return RatingData(
         score: (json['rate'] as num).toDouble(),
         reviews: json['count'] as int
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'score': score,
+      'reviews': reviews
+    };
+  }
+
+  factory RatingData.fromMap(Map<dynamic, dynamic> map) {
+    return RatingData(
+        score: (map['score'] as num).toDouble(),
+        reviews: map['reviews'] as int
     );
   }
 }
