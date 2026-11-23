@@ -68,5 +68,11 @@ final darkTheme = ThemeData(
         borderRadius: BorderRadiusGeometry.circular(12)
       )
     )
+  ),
+
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+    )
   )
 );

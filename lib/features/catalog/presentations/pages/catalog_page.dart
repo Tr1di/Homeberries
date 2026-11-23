@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:fuzzywuzzy/fuzzywuzzy.dart';
 import 'package:homeberries/app/services/api_service.dart';
 import 'package:homeberries/features/catalog/domain/entities/product.dart';
 import 'package:homeberries/features/catalog/presentations/widgets/product_card.dart';
@@ -15,10 +16,26 @@ class CatalogPage extends StatefulWidget {
 class CatalogState extends State<CatalogPage> {
   final ApiService _api = ApiService();
 
+  final _queryController = TextEditingController();
+
   late Future<List<Product>> _products;
 
   Future<List<Product>> _fetchData() async {
-    return await _api.getProducts();
+    final query = _queryController.text;
+    final products = await _api.getProducts();
+
+    if (query.trim().isEmpty) {
+      return products;
+    }
+
+    return extractAllSorted<Product>(
+        query: query,
+        choices: products,
+        getter: (product) => product.name,
+        cutoff: 50,
+    )
+        .map((product) => product.choice)
+        .toList();
   }
 
   @override
@@ -51,9 +68,15 @@ class CatalogState extends State<CatalogPage> {
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Каталог",
-          style: Theme.of(context).textTheme.headlineMedium,
+        title: TextField(
+          controller: _queryController,
+          onSubmitted: (value) {
+            _refresh();
+          },
+          decoration: InputDecoration(
+            labelText: 'Название товара',
+            hintText: 'Введите название'
+          ),
         ),
         actions: [
           IconButton(

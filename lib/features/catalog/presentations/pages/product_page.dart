@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:homeberries/features/cart/presentation/widgets/add_to_cart_button.dart';
 import 'package:homeberries/features/catalog/domain/entities/product.dart';
 import 'package:homeberries/features/catalog/presentations/widgets/product_rating.dart';
 
@@ -32,6 +33,7 @@ class ProductPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 spacing: 12,
+                crossAxisAlignment: .stretch,
                 children: [
                   SizedBox(
                     width: 350,
@@ -72,6 +74,10 @@ class ProductPage extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+
+                  AddToCartButton(
+                      product: product
                   )
                 ],
               ),
